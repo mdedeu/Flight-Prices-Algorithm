@@ -4,6 +4,36 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
 class Ejercicio1Test {
+  @Test
+  void directFlight(){
+    int[][] flights= new int[][]{
+            {0,1,1},
+            {0,2,1},
+            {2,1,1}
+    };
+    int ans = Ejercicio1.findCheapestPrice(3, flights, 0, 1, 2);
+    assertEquals(1,ans);
+
+  }
+  @Test
+  void severalPaths(){
+    int[][] flights= new int[][]{
+            {0,3,1},
+            {3,2,1},
+            {0,2,3},
+            {2,1,1},
+            {0,1,10}
+    };
+    int nonStop = Ejercicio1.findCheapestPrice(4, flights, 0, 1, 0);
+    assertEquals(10,nonStop);
+
+    int oneStop = Ejercicio1.findCheapestPrice(4, flights, 0, 1, 1);
+    assertEquals(4,oneStop);
+
+    int twoStops = Ejercicio1.findCheapestPrice(4, flights, 0, 1, 2);
+    assertEquals(3,twoStops);
+  }
+
 
   @Test
   void performanceTest() {
