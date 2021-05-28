@@ -27,13 +27,13 @@ public class Ejercicio1 {
       visited.add(lastEdge.target);
       for (Edge edge : nodes.get(lastEdge.target)) {
         int totalCost = lastEdge.weight + edge.weight;
-        if (!distances.containsKey(edge.target) || totalCost <= distances.get(edge.target)) {
+        if ((!distances.containsKey(edge.target) || totalCost <= distances.get(edge.target))) {
             distances.put(edge.target, totalCost);
             queue.add(new Edge(edge.target, totalCost));
-            if(edge.target==dest){
-              minCost=totalCost;
-            }
         }
+      }
+      if(lastEdge.target==dest){
+        minCost=distances.get(dest);
       }
     }
     return minCost;
