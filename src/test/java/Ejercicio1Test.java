@@ -13,6 +13,15 @@ class Ejercicio1Test {
     };
     int ans = Ejercicio1.findCheapestPrice(3, flights, 0, 1, 2);
     assertEquals(1,ans);
+  }
+  @Test
+  void noFlight(){
+    int[][] flights= new int[][]{
+            {0,3,1},
+            {3,2,1},
+    };
+    int nonStop = Ejercicio1.findCheapestPrice(4, flights, 0, 1, 0);
+    assertEquals(-1,nonStop);
 
   }
   @Test
