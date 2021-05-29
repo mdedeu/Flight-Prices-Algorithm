@@ -25,7 +25,35 @@ class Ejercicio1Test {
 
   }
   @Test
-  void severalPaths(){
+  void oneStop(){
+    int[][] flights= new int[][]{
+            {0,3,1},
+            {3,2,1},
+            {0,2,3},
+            {2,1,1},
+            {0,1,10}
+    };
+
+    int oneStop = Ejercicio1.findCheapestPrice(4, flights, 0, 1, 1);
+    assertEquals(4,oneStop);
+
+  }
+  @Test
+  void twoStops(){
+    int[][] flights= new int[][]{
+            {0,3,1},
+            {3,2,1},
+            {0,2,3},
+            {2,1,1},
+            {0,1,10}
+    };
+
+    int twoStops = Ejercicio1.findCheapestPrice(4, flights, 0, 1, 2);
+    assertEquals(3,twoStops);
+
+  }
+  @Test
+  void nonStop(){
     int[][] flights= new int[][]{
             {0,3,1},
             {3,2,1},
@@ -35,14 +63,21 @@ class Ejercicio1Test {
     };
     int nonStop = Ejercicio1.findCheapestPrice(4, flights, 0, 1, 0);
     assertEquals(10,nonStop);
-
-    int oneStop = Ejercicio1.findCheapestPrice(4, flights, 0, 1, 1);
-    assertEquals(4,oneStop);
-
-    int twoStops = Ejercicio1.findCheapestPrice(4, flights, 0, 1, 2);
-    assertEquals(3,twoStops);
   }
+  @Test
+  void flightsCycle(){
 
+    int[][] flights= new int[][]{
+            {0,3,1},
+            {3,2,1},
+            {0,2,3},
+            {2,1,1},
+            {0,1,10},
+            {1,0,30}
+    };
+    int ans = Ejercicio1.findCheapestPrice(4, flights, 0, 1, 10);
+    assertEquals(3,ans);
+  }
 
   @Test
   void performanceTest() {
