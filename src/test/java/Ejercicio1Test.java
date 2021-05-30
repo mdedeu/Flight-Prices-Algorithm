@@ -1,9 +1,35 @@
 import org.junit.jupiter.api.Test;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertTrue;
+import static org.junit.jupiter.api.Assertions.*;
 
 class Ejercicio1Test {
+    @Test
+    void illegalK(){
+        int[][] flights= new int[][]{
+                {0,1,1},
+                {0,2,1},
+                {2,1,1}
+        };
+        assertThrows(IllegalArgumentException.class, () -> Ejercicio1.findCheapestPrice(3,flights,0,1,-1));
+    }
+    @Test
+    void illegalN(){
+        int[][] flights= new int[][]{
+                {0,1,1},
+                {0,2,1},
+                {2,1,1}
+        };
+        assertThrows(IllegalArgumentException.class, () -> Ejercicio1.findCheapestPrice(-1,flights,0,1,1));
+    }
+    @Test
+    void illegalFlight(){
+        int[][] flights= new int[][]{
+                {0,1,1},
+                {0,2,1},
+                {2,1,1}
+        };
+        assertThrows(IllegalArgumentException.class, () -> Ejercicio1.findCheapestPrice(3,flights,0,0,1));
+    }
     @Test
     void directFlight(){
         int[][] flights= new int[][]{

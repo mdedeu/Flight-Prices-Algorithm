@@ -3,6 +3,15 @@ import java.util.*;
 public class Ejercicio1 {
 
   static int findCheapestPrice(int n, int[][] flights, int src, int dst, int k) {
+    if(k<0)
+      throw new IllegalArgumentException("Illegal Stops");
+    if(n<2){
+      throw new IllegalArgumentException("Must have at least 2 airport terminals");
+    }
+    if(src==dst){
+      throw new IllegalArgumentException("Origin and Destination must be different");
+    }
+
     Map<Integer, List<Edge>> nodes = new HashMap<>();
     //Set a map where each node has a list of edges
     for (int i = 0; i < n; i++)
